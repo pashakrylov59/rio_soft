@@ -1,0 +1,13 @@
+1)
+Select NAME2, OWNER_NAME, POSITION, PHONE
+From LA_EMP_SPR
+Where STATE = 1 AND MONTH(BIRTHDAY) = MONTH(NOW())
+Order by BIRTHDAY
+
+2)
+Set DATEFIRST 1 -- определяем ПН как начало недели
+Select TM, NAME
+From LA_PR_FACT Inner Join LA_PRJ_SPR ON LA_PR_FACT.PRJ_ID = LA_PRJ_SPR.ID_PRJ
+Where EMP_ID = 83 
+      AND DT >= Dateadd(day, 1-Datepart(dw, Getdate()), CONVERT(date, Getdate())) 
+      AND DT <  Dateadd(day, 8-Datepart(dw, Getdate()), CONVERT(date, Getdate()))
